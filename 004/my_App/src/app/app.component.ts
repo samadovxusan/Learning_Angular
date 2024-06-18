@@ -1,7 +1,6 @@
 
 import { RouterOutlet } from '@angular/router';
 import { Component, inject, TemplateRef, ViewEncapsulation } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
