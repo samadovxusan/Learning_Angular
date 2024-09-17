@@ -1,0 +1,16 @@
+<!-- car-list.component.html -->
+<div class="container mx-auto py-8">
+  <h1 class="text-3xl font-bold text-center mb-8">Car Listings</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div *ngFor="let car of cars" class="bg-white shadow-lg rounded-lg overflow-hidden">
+      <img [src]="car.Image" alt="{{ car.Name }}" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h3 class="text-lg font-bold">{{ car.Name }}</h3>
+        <p class="text-sm text-gray-500 mb-2">{{ car.Type }}</p>
+        <p class="text-gray-700">{{ car.Description }}</p>
+        <p class="text-lg font-semibold text-blue-600 mt-4">${{ car.Price | number }}</p>
+      </div>
+    </div>
+  </div>
+</div>

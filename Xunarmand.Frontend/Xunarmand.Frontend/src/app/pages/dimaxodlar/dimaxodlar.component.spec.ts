@@ -1,19 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { DimaxodlarComponent } from './dimaxodlar.component';
 
-import { RegisterComponent } from './register.component';
-
-describe('RegisterComponent', () => {
-  let component: RegisterComponent;
-  let fixture: ComponentFixture<RegisterComponent>;
+describe('DimaxodlarComponent', () => {
+  let component: DimaxodlarComponent;
+  let fixture: ComponentFixture<DimaxodlarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RegisterComponent]
+      imports: [DimaxodlarComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RegisterComponent);
+    fixture = TestBed.createComponent(DimaxodlarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
