@@ -1,3 +1,16 @@
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
 .example-spacer {
   flex: 1 1 auto;
+}
+
+.text-amber-200 {
+  color: #FFBF00;
+}
+
+.rounded-full {
+  border-radius: 50%;
 }

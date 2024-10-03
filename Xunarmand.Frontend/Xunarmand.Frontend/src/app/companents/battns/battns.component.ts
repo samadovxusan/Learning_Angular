@@ -3,7 +3,8 @@ import {MatChipsModule} from '@angular/material/chips';
 import {CdkDragDrop, CdkDropList, moveItemInArray} from "@angular/cdk/drag-drop";
 import {MatIcon} from "@angular/material/icon";
 import {MatIconButton} from "@angular/material/button";
-import {RouterLink} from "@angular/router";
+import {RouterLink, RouterOutlet} from "@angular/router";
+import {FooterComponent} from "../footer/footer.component";
 
 export interface Vegetable {
   name: string;
@@ -12,7 +13,7 @@ export interface Vegetable {
 @Component({
   selector: 'app-battns',
   standalone: true,
-  imports: [MatChipsModule, CdkDropList, MatIcon, MatIconButton, RouterLink],
+  imports: [MatChipsModule, CdkDropList, MatIcon, MatIconButton, RouterLink, RouterOutlet, FooterComponent],
   templateUrl: './battns.component.html',
   styleUrl: './battns.component.scss'
 })

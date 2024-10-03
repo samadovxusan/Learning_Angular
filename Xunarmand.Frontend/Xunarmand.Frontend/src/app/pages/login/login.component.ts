@@ -7,10 +7,11 @@ import {
 } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { Router, RouterLink } from '@angular/router';
+import {Router, RouterLink, RouterOutlet} from '@angular/router';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import {AuthService} from "../../../services/auth.service";
 import {jwtDecode} from "jwt-decode";
+import {FooterComponent} from "../../companents/footer/footer.component";
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ import {jwtDecode} from "jwt-decode";
     RouterLink,
     MatSnackBarModule,
     MatIconModule,
-    ReactiveFormsModule,],
+    ReactiveFormsModule, FooterComponent, RouterOutlet,],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -36,18 +37,18 @@ export class LoginComponent implements  OnInit{
   roles : string = '';
 
 
-  login(){
-    this.authservice.login(this.form.value).subscribe(
-      {
-       next: (response) => {
-         console.log(response);
-         this.decodeToken = jwtDecode(localStorage.getItem(this.token)!);
-         this.roles = this.decodeToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
-         console.log(this.roles);
-         }
+  login() {
+    this.authservice.login(this.form.value).subscribe({
+      next: (response) => {
+
+        const token = response.token; // Serverdan kelgan tokenni oling
+        console.log(token);
+        localStorage.setItem('token', token); // Tokenni localStorage'ga saqlang
+        this.router.navigate(['/menu']);
       }
-    )
+    });
   }
+
 
   ngOnInit(): void {
     this.form = this.fb.group({

@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {ProductResponse} from "../../interfaces/product-response";
 import {DecimalPipe, NgForOf} from "@angular/common";
+import {Router} from "@angular/router";
+import {ProductService} from "../../services/product.service";
 
 @Component({
   selector: 'app-cards',
@@ -13,49 +15,36 @@ import {DecimalPipe, NgForOf} from "@angular/common";
   styleUrl: './cards.component.scss'
 })
 export class CardsComponent {
-  cars: ProductResponse[] = [
-    {
-      Name: 'Tesla Model S',
-      Image: "https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014_640.jpg",
-      Price: 79999,
-      Description: 'A premium electric sedan with cutting-edge technology.',
-      Type: 'Electric',
-    },
-    {
-      Name: 'Ford Mustang',
-      Image: 'https://example.com/mustang.jpg',
-      Price: 55999,
-      Description: 'A classic American muscle car with powerful performance.',
-      Type: 'Gasoline',
-    },
-    {
-      Name: 'Toyota Prius',
-      Image: 'https://example.com/prius.jpg',
-      Price: 24999,
-      Description: 'A fuel-efficient hybrid car ideal for city commuting.',
-      Type: 'Hybrid',
-    },
-    {
-      Name: 'Tesla Model S',
-      Image: "https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014_640.jpg",
-      Price: 79999,
-      Description: 'A premium electric sedan with cutting-edge technology.',
-      Type: 'Electric',
-    },
-    {
-      Name: 'Ford Mustang',
-      Image: 'https://example.com/mustang.jpg',
-      Price: 55999,
-      Description: 'A classic American muscle car with powerful performance.',
-      Type: 'Gasoline',
-    },
-    {
-      Name: 'Toyota Prius',
-      Image: 'https://example.com/prius.jpg',
-      Price: 24999,
-      Description: 'A fuel-efficient hybrid car ideal for city commuting.',
-      Type: 'Hybrid',
-    }
-  ];
+  router = inject(Router);
+  productservice = inject(ProductService);
 
+  products : ProductResponse[] = [];
+  demaxod : ProductResponse[] = [];
+  aksesuar : ProductResponse[] = [];
+  vintelatsiya : ProductResponse[] = [];
+  gumbazlar : ProductResponse[] = [];
+  profnastil : ProductResponse[] = [];
+
+  constructor() {
+    this.productservice.product({}).subscribe((data) =>{
+      this.products = (data)
+      for (let i = 0; i < this.products.length; i++) {
+        if (this.products[i].type == 'dimaxod') {
+          this.demaxod.push(this.products[i]);
+        }
+        if (this.products[i].type == 'aksesuar') {
+          this.aksesuar.push(this.products[i]);
+        }
+        if (this.products[i].type == 'vintelatsiya') {
+          this.vintelatsiya.push(this.products[i]);
+        }
+        if (this.products[i].type == 'gumbazlar') {
+          this.gumbazlar.push(this.products[i]);
+        }
+        if (this.products[i].type == 'profnastil') {
+          this.profnastil.push(this.products[i]);
+        }
+      }
+    });
+  }
 }

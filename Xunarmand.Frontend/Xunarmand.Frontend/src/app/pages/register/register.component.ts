@@ -7,10 +7,11 @@ import {
 } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { Router, RouterLink } from '@angular/router';
+import {Router, RouterLink, RouterOutlet} from '@angular/router';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import {AuthService} from "../../../services/auth.service";
 import {jwtDecode} from "jwt-decode";
+import {FooterComponent} from "../../companents/footer/footer.component";
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,7 @@ import {jwtDecode} from "jwt-decode";
     RouterLink,
     MatSnackBarModule,
     MatIconModule,
-    ReactiveFormsModule,],
+    ReactiveFormsModule, RouterOutlet, FooterComponent,],
   templateUrl: './register.component.html',
   styleUrl: './register.component.html'
 })
@@ -43,24 +44,19 @@ export class RegisterComponent implements  OnInit{
   register() {
     this.authservice.register(this.form.value).subscribe({
       next: (response) => {
-        console.log(response);
-        console.log(response.success); // Log the full response to inspect it
-        if (response.success) {  // Fix this.true to true
-          console.log('Success', response);
+        if (response) {  // Fix this.true to true
           this.router.navigate(['/login']);
         }
       }
     });
   }
-
-
   ngOnInit(): void {
     this.form = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      Name: ['', Validators.required],
+      EmailAddress: ['', [Validators.required, Validators.email]],
+      PasswordHash: ['', Validators.required],
+      PhoneNumber: ['', [Validators.required, Validators.pattern(/^[0-9]{9}$/),Validators.maxLength(9)]], // 10 ta raqamdan iborat telefon raqami
     });
   }
-
 
 }
