@@ -32,7 +32,7 @@ export const routes: Routes = [
 
 
 
-  {path : '', component : HomeComponent},
+  {path : '', component : AboutComponent},
   {path : 'login', component : LoginComponent},
   {path : 'register', component : RegisterComponent},
   {path : 'about', component : AboutComponent},
@@ -48,13 +48,27 @@ export const routes: Routes = [
   {path : 'about/menu/aksesuarlar', component : AksesuarlarComponent},
   {path : 'about/menu/vintilatsiya', component : VintilatsiyaComponent},
   {path : 'about/menu/turubalar', component : TurbalarComponent},
-  
+
+  {path : 'menu/about', component : AboutComponent},
+  {path : 'menu/menu', component : MenuComponent},
+  {path : 'menu/product', component : ProductComponent},
+  {path : 'menu/contact', component : ContactComponent},
   {path : 'menu/dimaxodlar', component : DimaxodlarComponent},
   {path : 'menu/gumbazlar', component : GumbzalarComponent},
   {path : 'menu/profnastillar', component : ProfnastillarComponent},
   {path : 'menu/aksesuarlar', component : AksesuarlarComponent},
   {path : 'menu/vintilatsiya', component : VintilatsiyaComponent},
   {path : 'menu/turubalar', component : TurbalarComponent},
+
+  {path : 'menu/menu/about', component : AboutComponent},
+  {path : 'menu/menu/product', component : ProductComponent},
+  {path : 'menu/menu/contact', component : ContactComponent},
+  {path : 'menu/menu/dimaxodlar', component : DimaxodlarComponent},
+  {path : 'menu/menu/gumbazlar', component : GumbzalarComponent},
+  {path : 'menu/menu/profnastillar', component : ProfnastillarComponent},
+  {path : 'menu/menu/aksesuarlar', component : AksesuarlarComponent},
+  {path : 'menu/menu/vintilatsiya', component : VintilatsiyaComponent},
+  {path : 'menu/menu/turubalar', component : TurbalarComponent},
   {path : 'details/:id', component : NewproductComponent},
 
   {path : 'contact/gumbazlar', component : GumbzalarComponent},
@@ -95,6 +109,7 @@ export const routes: Routes = [
   {path : 'product/turubalar', component : TurbalarComponent},
 
 
-  {path : '**', component : AboutComponent},
+  // {path : '**', component : AboutComponent},
+  {path: '**', redirectTo: '/about', pathMatch: 'prefix' }
 
 ];

@@ -14,7 +14,7 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
   product(p: {}): Observable<any> {
-    return this.http.get<ProductResponse>( 'http://localhost:5000/api/product?Filter.PageSize=100&Filter.PageToken=1').pipe(
+    return this.http.get<ProductResponse>( 'http://xunarmand.uz/api/product?Filter.PageSize=100&Filter.PageToken=1').pipe(
       map((response: any) => {
         return response;
       })
@@ -22,14 +22,21 @@ export class ProductService {
   }
 
   productID(ProductId: string | null): Observable<any> {
-    return this.http.get<ProductResponse>( 'http://localhost:5000/api/product/' + ProductId).pipe(
+    return this.http.get<ProductResponse>( 'http://xunarmand.uz/api/product/' + ProductId).pipe(
       map((response: any) => {
         return response;
       })
     );
   }
-}
+  deleteProduct(ProductId: string | null): Observable<any> {
+    return this.http.delete<ProductResponse>( 'http://xunarmand.uz/api/product/' + ProductId).pipe(
+      map((response: any) => {
+        return response;
+      })
+    );
+  }
 
+}
 
 
 

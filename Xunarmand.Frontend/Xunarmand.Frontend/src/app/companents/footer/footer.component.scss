@@ -1,82 +1,45 @@
-.footer {
-  background-color: #222;
-  color: #ccc;
-  padding: 40px 0;
-}
+@media (max-width: 768px) {
+  footer .container {
+    flex-direction: row; /* Elementlarni gorizontal tartibda joylashtirish */
+    text-align: center; /* Matnni markazda joylashtirish */
+  }
 
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  //gap: 10px;
-}
+  footer .container div {
+    width: 100%; /* Har bir div'ni to'liq kenglikda qilish */
+  }
 
-.footer-column {
-  width: 100%;
-  max-width: 250px;
-  text-align: center;
-}
+  footer ul {
+    margin-bottom: 20px; /* Har bir ul elementiga pastki masofa berish */
+  }
 
-.footer-nav {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+  footer ul li {
+    margin-bottom: 10px; /* Har bir li elementiga pastki masofa berish */
+  }
 
-.footer-nav li {
-  margin-bottom: 10px;
-}
+  footer .container img {
+    width: 120px; /* Logo hajmini kichikroq qilish */
+    height: 120px; /* Logo balandligini o'rnatish */
+    margin: 0 auto 20px; /* Markazda joylashtirish */
+  }
 
-.footer-title {
-  font-size: 18px;
-  color: #fff;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
+  footer .container a {
+    font-size: 1rem; /* Matn o'lchamlarini moslashtirish */
+  }
 
-.footer-nav a {
-  color: #ccc;
-  text-decoration: none;
-  transition: color 0.3s;
-}
+  footer .container .flex {
+    justify-content: center; /* Flex elementlarini markazga joylashtirish */
+  }
+  .flex {
+    flex-direction: column; /* Kichik ekranlarda ustma-ust chiqarish */
+    align-items: center; /* Tugmalarni markazga joylash */
+  }
 
-.footer-nav a:hover {
-  color: #aaa;
-}
+  footer .border-t .flex {
+    justify-content: center; /* Flex elementlarini markazga joylashtirish */
+    margin-bottom: 20px; /* Pastki masofa berish */
+  }
 
-.footer-bottom {
-  text-align: center;
-  margin-top: 40px;
-}
-
-.social-icons {
-  margin-bottom: 20px;
-}
-
-.social-button {
-  background-color: #555;
-  border: none;
-  border-radius: 50%;
-  padding: 10px;
-  margin: 0 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.social-button:hover {
-  background-color: #777;
-}
-
-.footer-info {
-  font-size: 14px;
-}
-
-.footer-info a {
-  color: #3399ff;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.footer-info a:hover {
-  color: #66ccff;
+  footer .border-t .text-lg {
+    margin-top: 10px; /* Yuqoridan masofa berish */
+  }
 }

@@ -22,20 +22,15 @@ export class ProductComponent {
   productservice = inject(ProductService);
 
   products : ProductResponse[] = [];
-  demaxod : ProductResponse[] = [];
-  aksesuar : ProductResponse[] = [];
-  vintelatsiya : ProductResponse[] = [];
-  gumbazlar : ProductResponse[] = [];
-  profnastil : ProductResponse[] = [];
 
   constructor() {
-    this.productservice.product({}).subscribe((data) =>{
-      this.products = (data)
-      for (let i = 0; i < this.products.length; i++) {
-        console.log(this.products[i])
-      }
+    this.productservice.product({}).subscribe((data) => {
+      this.products = this.shuffleArray(data);  // shuffle array to randomize products
     });
+  }
 
+  shuffleArray(array: any[]): any[] {
+    return array.sort(() => Math.random() - 0.5);
   }
   openNewWindow(id: string){
     this.productservice.productID(id).subscribe((data) =>{

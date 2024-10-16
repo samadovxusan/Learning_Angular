@@ -9,6 +9,9 @@ import {routes} from "../../app.routes";
 import {AuthService} from "../../../services/auth.service";
 import {jwtDecode} from "jwt-decode";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {SendmessageRespons} from "../../interfaces/sendmessage-respons";
+import {Sendmessage} from "../../interfaces/sendmessage";
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-newproduct',
@@ -36,6 +39,7 @@ export class NewproductComponent implements OnInit {
   decodeToken : any | null;
   token  = 'token'
   roles : string = '';
+  str : string = '';
 
 
   onBuyNow() {
@@ -45,10 +49,16 @@ export class NewproductComponent implements OnInit {
       this.roles = this.decodeToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
       const username = this.decodeToken['UserName']; // 'name' yoki 'username' maydoni
       const id = this.decodeToken['Id']; // ID maydoni
+      const phone = this.decodeToken['Number'];
 
-      console.log(this.roles);
-      console.log(username);
-      console.log(id);
+      this.str = username + ' ' + ' ' + phone + '  ' + '--->' + ' ' + this.aksesuar[0].productName +' ' + 'Qiziqish bildirdi';
+      this.authService.sendmessage(this.str)
+      .subscribe(
+        (response: any) => {
+          console.log('Xabar yuborildi:', response);
+          });
+
+
 
       // Chiroyli xabar ko'rsatish
       this.snackBar.open('Sizga tez orada aloqaga chiqishadi!', 'Yopish', {

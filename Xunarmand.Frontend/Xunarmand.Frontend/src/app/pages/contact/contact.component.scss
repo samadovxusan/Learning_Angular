@@ -1,81 +1,189 @@
-.contact-container {
-  max-width: 600px; /* Maksimal kenglik */
-  margin: 0 auto;   /* Markazga joylashtirish */
-  padding: 20px;    /* Ichki bo'sh joy */
-  background-color: #f9f9f9; /* Yengil fon rangi */
-  border-radius: 8px; /* Burchaklarni yumshatish */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soyali effekt */
-}
-
-.contact-title {
-  text-align: center; /* O'rtada joylashuvi */
-  color: cornflowerblue; /* Rang */
-  margin-bottom: 20px; /* Pastga bo'sh joy */
-}
-
-.contact-form {
+.navbar {
   display: flex;
-  flex-direction: column; /* Vertikal joylashuv */
+  align-items: center;
 }
 
-.form-group {
-  margin-bottom: 15px; /* Har bir element o'rtasida bo'sh joy */
+/* Telefon uchun menyu */
+@media (max-width: 750px) {
+  .navbar .flex-grow {
+    display: none; /* Katta ekranda tugmalarni yashirish */
+  }
 }
 
-label {
-  margin-bottom: 5px; /* Pastga bo'sh joy */
-  font-weight: bold;  /* Qalin shriftda */
+.menu-open {
+  display: block;
 }
-
-input, textarea {
-  width: 100%; /* Kenglikni to'liq egallash */
-  padding: 10px; /* Ichki bo'sh joy */
-  border: 1px solid #ccc; /* Chegarani belgilash */
-  border-radius: 4px; /* Burchaklarni yumshatish */
-  font-size: 16px; /* Shrift o'lchami */
-}
-
-input:focus, textarea:focus {
-  border-color: cornflowerblue; /* Focus qilinganda rangni o'zgartirish */
-  outline: none; /* Standart outline ni olib tashlash */
-}
-
-.submit-button {
-  background-color: cornflowerblue; /* Tugma rangi */
+.language-button {
+  //background-color: #007bff; /* Tugma rangi */
   color: white; /* Matn rangi */
-  padding: 10px; /* Ichki bo'sh joy */
-  border: none; /* Chegarasiz */
-  border-radius: 4px; /* Burchaklarni yumshatish */
-  font-size: 16px; /* Shrift o'lchami */
-  cursor: pointer; /* Kursorni qo'yish */
-  transition: background-color 0.3s; /* Rang o'zgarishiga vaqt berish */
+  border: none; /* Chegarani olib tashlash */
+  //padding: 10px 20px; /* Tugma ichidagi bo'shliqlar */
+  border-radius: 5px; /* Tugma burchaklari */
+  cursor: pointer; /* Pointer ko'rsatgichi */
 }
 
-.submit-button:hover {
-  background-color: #007bb5; /* Hover qilinganda rangni o'zgartirish */
+.language-button:hover {
+  background-color: gray; /* Hover holati */
 }
 
-.social-links {
-  margin-top: 20px; /* Ijtimoiy tarmoqlar bo'limi uchun bo'sh joy */
-  text-align: center; /* O'rtaga joylashtirish */
+/* Dropdown */
+.absolute {
+  position: absolute;
+}
+@media (max-width: 768px) {
+  footer .container {
+    flex-direction: row; /* Elementlarni gorizontal tartibda joylashtirish */
+    text-align: center; /* Matnni markazda joylashtirish */
+  }
+
+  footer .container div {
+    width: 100%; /* Har bir div'ni to'liq kenglikda qilish */
+  }
+
+  footer ul {
+    margin-bottom: 20px; /* Har bir ul elementiga pastki masofa berish */
+  }
+
+  footer ul li {
+    margin-bottom: 10px; /* Har bir li elementiga pastki masofa berish */
+  }
+
+  footer .container img {
+    width: 120px; /* Logo hajmini kichikroq qilish */
+    height: 120px; /* Logo balandligini o'rnatish */
+    margin: 0 auto 20px; /* Markazda joylashtirish */
+  }
+
+  footer .container a {
+    font-size: 1rem; /* Matn o'lchamlarini moslashtirish */
+  }
+
+  footer .container .flex {
+    justify-content: center; /* Flex elementlarini markazga joylashtirish */
+  }
+  .flex {
+    align-items: center; /* Tugmalarni markazga joylash */
+  }
+
+  footer .border-t .flex {
+    justify-content: center; /* Flex elementlarini markazga joylashtirish */
+    margin-bottom: 20px; /* Pastki masofa berish */
+  }
+
+  footer .border-t .text-lg {
+    margin-top: 10px; /* Yuqoridan masofa berish */
+  }
+}
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem; /* Hero bo'limi uchun sarlavhani kichik ekranlarga moslashtirish */
+    margin: 0 auto; /* Markazga joylash */
+  }
+
+  .text-xl {
+    font-size: 1.25rem; /* Matn hajmini kichikroq qilish */
+  }
+
+  .text-lg {
+    font-size: 1rem; /* Qo'shimcha matn hajmini kichikroq qilish */
+    padding: 0 15px; /* Kichik ekranlarda matn bo'sh joylarini kamaytirish */
+  }
+
+  //a {
+  //  padding: 10px 20px; /* Tugma uchun mos kattalik */
+  //  font-size: 1rem; /* Tugma ichidagi matn hajmi */
+  //  width: 100%; /* Tugmani to'liq kenglikka olib kelish kichik ekranlar uchun */
+  //  display: block; /* Kichik ekranlarda tugma ustma-ust chiqishi uchun */
+  //  margin-top: 20px;
+  //}
+
+
+  @media (max-width: 768px) {
+    footer .container {
+      flex-direction: row; /* Elementlarni gorizontal tartibda joylashtirish */
+      text-align: center; /* Matnni markazda joylashtirish */
+    }
+
+    footer .container div {
+      width: 100%; /* Har bir div'ni to'liq kenglikda qilish */
+    }
+
+    footer ul {
+      margin-bottom: 20px; /* Har bir ul elementiga pastki masofa berish */
+    }
+
+    footer ul li {
+      margin-bottom: 10px; /* Har bir li elementiga pastki masofa berish */
+    }
+
+    footer .container img {
+      width: 120px; /* Logo hajmini kichikroq qilish */
+      height: 120px; /* Logo balandligini o'rnatish */
+      margin: 0 auto 20px; /* Markazda joylashtirish */
+    }
+
+    footer .container a {
+      font-size: 1rem; /* Matn o'lchamlarini moslashtirish */
+    }
+
+    footer .container .flex {
+      justify-content: center; /* Flex elementlarini markazga joylashtirish */
+    }
+    .flex {
+      //flex-direction: column; /* Kichik ekranlarda ustma-ust chiqarish */
+      align-items: center; /* Tugmalarni markazga joylash */
+    }
+
+    footer .border-t .flex {
+      justify-content: center; /* Flex elementlarini markazga joylashtirish */
+    }
+
+    footer .border-t .text-lg {
+      margin-top: 10px; /* Yuqoridan masofa berish */
+    }
+  }
+  .language-button {
+    //background-color: #007bff; /* Tugma rangi */
+    color: white; /* Matn rangi */
+    border: none; /* Chegarani olib tashlash */
+    //padding: 10px 20px; /* Tugma ichidagi bo'shliqlar */
+    border-radius: 5px; /* Tugma burchaklari */
+    cursor: pointer; /* Pointer ko'rsatgichi */
+  }
+  .navbar {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Telefon uchun menyu */
+  @media (max-width: 750px) {
+    .navbar .flex-grow {
+      display: none; /* Katta ekranda tugmalarni yashirish */
+    }
+  }
+
+  .menu-open {
+    display: block;
+  }
+  .language-button {
+    //background-color: #007bff; /* Tugma rangi */
+    color: white; /* Matn rangi */
+    border: none; /* Chegarani olib tashlash */
+    //padding: 10px 20px; /* Tugma ichidagi bo'shliqlar */
+    border-radius: 5px; /* Tugma burchaklari */
+    cursor: pointer; /* Pointer ko'rsatgichi */
+  }
+
+  .language-button:hover {
+    background-color: gray; /* Hover holati */
+  }
+
+  /* Dropdown */
+  .absolute {
+    position: absolute;
+  }
+
+
 }
 
-.social-title {
-  margin-bottom: 10px; /* Pastga bo'sh joy */
-  font-weight: bold; /* Qalin shriftda */
-}
 
-.social-link {
-  display: inline-flex; /* Flex box bilan joylashish */
-  align-items: center; /* Markazda joylashish */
-  margin: 5px 0; /* O'rtada bo'sh joy */
-  color: cornflowerblue; /* Rang */
-  text-decoration: none; /* Chizilgan bo'lmasligi */
-  font-size: 18px; /* Shrift o'lchami */
-}
-
-.social-icon {
-  width: 24px; /* Ikonkalar uchun kenglik */
-  height: 24px; /* Ikonkalar uchun balandlik */
-  margin-right: 5px; /* Ikonkalar va matn o'rtasidagi bo'sh joy */
-}

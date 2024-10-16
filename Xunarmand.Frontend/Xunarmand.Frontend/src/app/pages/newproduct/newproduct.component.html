@@ -1,35 +1,18 @@
-<!--<div class="container mx-auto py-8">-->
-<!--  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">-->
-
-<!--    <div *ngFor="let product of aksesuar" class="bg-white shadow-lg rounded-lg overflow-hidden">-->
-<!--      <img [src]="product.imageUrl" alt="{{ product.productName }}"  class="  w-full h-30 object-cover bosmani">-->
-<!--      <div class="p-4">-->
-<!--        <h3 class="text-lg font-bold">{{ product.productName }}</h3>-->
-<!--        <p class="text-sm text-gray-500 mb-2">{{ product.type }}</p>-->
-<!--        <p class="text-gray-700">{{ product.description }}</p>-->
-<!--        <p class="text-gray-700">{{ product.id }}</p>-->
-<!--        <div class="flex justify-between items-center mt-4">-->
-<!--          <p class="text-lg font-semibold text-blue-600">  </p>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
 
 <div *ngFor="let product of aksesuar" class="container mx-auto py-20 flex space-x-8">
   <div  class="w-1/3">
-    <img [src]="product.imageUrl" alt="{{ product.productName }}" class="w-full h-auto object-cover rounded-lg shadow-md">
+    <img [src]="product.imageUrl" alt="{{ product.productName }}" class="w-full h-auto object-cover bosmani rounded-lg shadow-md">
   </div>
 
   <!-- Product Details (ong taraf) -->
   <div class="w-2/3 bg-white shadow-lg rounded-lg p-6">
     <h1 class="text-4xl font-bold mb-4">{{ product.productName }}</h1>
-    <p class="text-gray-700 text-lg mb-4"><strong>Type:</strong> {{ product.productName }}</p>
-    <p class="text-gray-700 mb-4"><strong>Description:</strong> {{ product.description }}</p>
-    <p class="text-gray-700 text-xl font-semibold mb-6"><strong>Price:</strong>  Narxlari juda hamyon bob</p>
+    <p class="text-gray-900 text-lg mb-4 font-bold"><strong>Type:</strong> {{ product.productName}}</p>
+    <p class="text-gray-900 mb-4 font-bold"><strong>Description:</strong> {{ product.description }}</p>
+    <p class="text-gray-900 text-xl font-semibold mb-6"><strong>Price:</strong>  Narxlari juda hamyon bob</p>
 
     <!-- Buy Now Button -->
-    <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700" (click)="onBuyNow()">
+    <button class="bg-blue-600 text-white px-6 py-3 rounded-lg transform hover:scale-105 hover:bg-gray-900" (click)="onBuyNow()">
       Buy Now
     </button>
   </div>

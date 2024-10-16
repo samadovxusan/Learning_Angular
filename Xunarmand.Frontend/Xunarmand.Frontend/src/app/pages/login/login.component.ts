@@ -25,6 +25,8 @@ import {FooterComponent} from "../../companents/footer/footer.component";
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements  OnInit{
+  constructor(private snackBar: MatSnackBar) {
+  }
   authservice = inject(AuthService);
   matSnackBar = inject(MatSnackBar);
   router = inject(Router);
@@ -40,11 +42,20 @@ export class LoginComponent implements  OnInit{
   login() {
     this.authservice.login(this.form.value).subscribe({
       next: (response) => {
-
+        console.log(response.token);
+        if (response.token) {
         const token = response.token; // Serverdan kelgan tokenni oling
-        console.log(token);
-        localStorage.setItem('token', token); // Tokenni localStorage'ga saqlang
         this.router.navigate(['/menu']);
+        }
+        else {
+          this.snackBar.open('Login yoki password xato!', 'Yopish', {
+            duration: 3000, // 3 soniya davomida ko'rsatish
+            verticalPosition: 'top', // O'ngdan yuqoriga
+            horizontalPosition: 'end', // O'ng tarafda
+            panelClass: ['custom-snackbar'] // Yangi CSS sinfi
+          })
+          this.form.reset()
+        }
       }
     });
   }
