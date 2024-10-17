@@ -9,25 +9,35 @@ import {MatDialog} from "@angular/material/dialog";
 import {jwtDecode} from "jwt-decode";
 import {UserInfoModalComponent} from "../../companents/user-info-modal/user-info-modal.component";
 import {AddProductComponent} from "../../companents/add-product/add-product.component";
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {HttpClient} from "@angular/common/http";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-    imports: [
-        RouterOutlet,
-        FooterComponent,
-        MatIcon,
-        MatIconButton,
-        MatToolbar,
-        NgIf,
-        RouterLink
-    ],
+  imports: [
+    RouterOutlet,
+    FooterComponent,
+    MatIcon,
+    MatIconButton,
+    MatToolbar,
+    NgIf,
+    RouterLink,
+    ReactiveFormsModule
+  ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
   menuOpen = false;
   isOpen = false;
+  contactForm: FormGroup;
+   authService = inject(AuthService);
+   str : string = '';
+
+
+
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
@@ -39,10 +49,36 @@ export class ContactComponent {
   decodeToken : any | null;
   roles : string = '';
   router = inject(Router);
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog,private http: HttpClient) {
     this.selectedLanguage = 'uz'; // Dastlabki til
+    this.contactForm = new FormGroup({
+      fullName: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      phoneNumber: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[0-9]{9}$')
+      ]),
+      message: new FormControl('', [Validators.required, Validators.maxLength(500)]),
+    });}
 
+  onSubmit() {
+    if (this.contactForm.valid) {
+      const formData = this.contactForm.value;
+      this.str = formData.fullName + ' ' + formData.phoneNumber + '  ' + '--->' + ' ' + formData.message;
+
+      this.authService.sendmessage(this.str).subscribe(
+        (response) => {
+          console.log('Message sent successfully', response);
+          this.contactForm.reset();
+        },
+        (error) => {
+          console.error('Error sending message', error);
+        }
+      );
+    }
   }
+
+
+
   ngOnInit() {
     const userData = localStorage.getItem('token'); // Local storjdan foydalanuvchi ma'lumotlarini olish
     if (userData) {
@@ -54,6 +90,7 @@ export class ContactComponent {
       const phone = this.decodeToken['Number'];
 
       this.user = { username, email, phone ,userRole,};
+
     }
   }
   showUserInfo() {
